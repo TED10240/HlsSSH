@@ -16,8 +16,30 @@
     <action name="account_*" class="main.web.action.AccountAction" method="{1}">
         <result name="success">/home.jsp</result>
         <result name="login">/index.jsp</result>
+        <result name="pwdUI">/jsp/changepwd.jsp</result>
+        <result name="myerror">/jsp/myerror.jsp</result>
+        <result name="finish">/jsp/success.jsp</result>
 
         <result name="registerUI">/register.jsp</result>
+
+        <result name="list" type="redirectAction">project_findAllProject</result>
+
     </action>
+        <action name="project_*" class="main.web.action.ProjectAction" method="{1}">
+            <result name="saveUI">/jsp/project/projectadd.jsp</result>
+            <result name="editUI">/jsp/project/projectedit.jsp</result>
+            <result name="findAll">/jsp/project/projectlist.jsp</result>
+            <result name="success">/jsp/success.jsp</result>
+            <result name="list" type="redirectAction">project_findAllProject</result>
+    </action>
+
+        <action name="department_*" class="main.web.action.DepartmentAction" method="{1}">
+            <result name="saveUI">/jsp/department/departmentadd.jsp</result>
+            <result name="editUI">/jsp/department/departmentedit.jsp</result>
+            <result name="findAll">/jsp/department/departmentlist.jsp</result>
+            <result name="success">/jsp/success.jsp</result>
+            <result name="list" type="redirectAction">department_findAllDepartment</result>
+        </action>
+
     </package>
 </struts>

@@ -11,7 +11,8 @@
     <tr>
         <td width="60%" align="right"><h2>医院挂号管理系统</h2></td>
         <td width="40%" align="right">
-            当前用户：${account.userID} 类型： ${account.kindStr}<a href="account_pwdUI.action" target="main"> 修改密码</a>
+            当前用户：${account.userID} 类型： ${account.kindStr}
+            <a href="account_pwdUI.action" target="main"> 修改密码</a>
             <a href="account_logout.action" target="_top">退出</a>
         </td>
     </tr>

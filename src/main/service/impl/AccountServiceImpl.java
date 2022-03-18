@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Transactional(readOnly=true,propagation= Propagation.SUPPORTS)
-
 public class AccountServiceImpl implements IAccountService{
 
     private IAccountDao accountDao;

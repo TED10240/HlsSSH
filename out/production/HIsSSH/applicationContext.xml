@@ -30,6 +30,8 @@
             <list>
                 <value>main/domain/Account.hbm.xml</value>
                 <value>main/domain/Member.hbm.xml</value>
+                <value>main/domain/Project.hbm.xml</value>
+                <value>main/domain/Department.hbm.xml</value>
             </list>
         </property>
         <!--设置Hibernate的属性-->
@@ -48,12 +50,19 @@
     <bean id="accountDao" class="main.dao.impl.AccountDaoImpl">
         <property name="hibernateTemplate" ref="hibernateTemplate"></property>
     </bean>
-
-
+    <!-- accountDao -->
+    <bean id="projectDao" class="main.dao.impl.ProjectDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <!-- memberDao -->
+    <bean id="departmentDao" class="main.dao.impl.DepartmentDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
     <!-- memberDao -->
     <bean id="memberDao" class="main.dao.impl.MemberDaoImpl">
         <property name="hibernateTemplate" ref="hibernateTemplate"></property>
     </bean>
+
 
     <!--	Service-->
     <!-- 配置accountService -->
@@ -62,11 +71,32 @@
         <property name="accountDao" ref="accountDao"></property>
         <property name="memberDao" ref="memberDao"></property>
     </bean>
+    <!-- 配置ProjectService -->
+    <bean id="projectService" class="main.service.impl.ProjectServiceImpl">
+        <!-- 注入departmentDao属性 -->
+        <property name="projectDao" ref="projectDao"></property>
+        <property name="departmentDao" ref="departmentDao"></property>
+    </bean>
+    <!-- 配置ProjectService -->
+    <bean id="departmentService" class="main.service.impl.DepartmentServiceImpl">
+        <!-- 注入departmentDao属性 -->
+        <property name="departmentDao" ref="departmentDao"></property>
+    </bean>
 
     <!-- 配置accountAction -->
     <bean id="accountAction" class="main.web.action.AccountAction" scope="prototype">
         <property name="accountService" ref="accountService"></property>
     </bean>
+    <!-- 配置projectAction -->
+    <bean id="projectAction" class="main.web.action.ProjectAction" scope="prototype">
+        <property name="projectService" ref="projectService"></property>
+    </bean>
+    <!-- 配置projectAction -->
+    <bean id="departmentAction" class="main.web.action.DepartmentAction" scope="prototype">
+        <property name="departmentService" ref="departmentService"></property>
+    </bean>
+
+
 
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
         <property name="sessionFactory" ref="sessionFactory"></property>

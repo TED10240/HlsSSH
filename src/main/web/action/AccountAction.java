@@ -135,7 +135,17 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
     public String changePWD(){
         account=(Account) session.get("account");
-        if (account.getPwd().equals(oldpwd)){
+
+        if(pwd.equals(oldpwd)) {
+            myerrorMessage = "原密码与修改密码相同";
+            return "myerror";
+        }
+        if ("".equals(pwd)){
+            myerrorMessage = "密码不可为空";
+            return "myerror";
+        }
+
+        if (oldpwd.equals(account.getPwd())){
             account.setPwd(pwd);
             accountService.update(account);
             session.put("account",account);

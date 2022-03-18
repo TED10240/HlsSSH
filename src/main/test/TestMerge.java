@@ -1,7 +1,9 @@
 package main.test;
 
 import main.domain.Account;
+import main.domain.Department;
 import main.service.IAccountService;
+import main.service.IProjectService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -9,9 +11,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
 public class TestMerge {
 
     ClassPathXmlApplicationContext ctx;
+    IProjectService projectService ;
+
 
     @Before
     public void loadCtx(){
@@ -38,4 +44,5 @@ public class TestMerge {
          iAccountService.findMemberById("1");
 
     }
+
 }
